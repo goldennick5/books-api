@@ -18,12 +18,14 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
 const config_1 = __importDefault(require("./config"));
-const book_model_1 = __importDefault(require("./books/book.model"));
+const book_model_1 = __importDefault(require("./books/models/book.model"));
+const routes_1 = __importDefault(require("./books/routes/routes"));
 const app = (0, express_1.default)();
 const port = process.env.PORT || 5000;
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.static(path_1.default.resolve(__dirname, 'static')));
+app.use('/', routes_1.default);
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield config_1.default.authenticate();

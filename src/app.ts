@@ -1,18 +1,21 @@
 import { config } from 'dotenv'
 config()
-import express, { Express } from 'express'
+import express, { Application } from 'express'
 import cors from 'cors'
 import path from 'path'
 import sequelizeConnection from './config'
 import Books from './books/models/book.model'
+import router from './books/routes/routes'
 
-const app: Express = express()
+const app: Application = express()
 
 const port = process.env.PORT || 5000
 
 app.use(cors())
 app.use(express.json())
 app.use(express.static(path.resolve(__dirname, 'static')))
+
+app.use('/', router)
 
 const start = async () => {
   try {
