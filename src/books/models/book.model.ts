@@ -1,5 +1,5 @@
 import { Model, Optional, DataTypes } from 'sequelize'
-import sequelizeConnection from '../config'
+import sequelizeConnection from '../../config'
 
 type BooksAtributes = {
   id: number
@@ -28,32 +28,35 @@ class Books
   public readonly updatedAt!: Date
 }
 
-Books.init({
-  id: {
-    type: DataTypes.INTEGER.UNSIGNED,
-    autoIncrement: true,
-    primaryKey: true,
+Books.init(
+  {
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    author: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    text: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   },
-  author: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  title: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  text: {
-    type: DataTypes.TEXT,
-    allowNull: false
-  },
-  image: {
-    type: DataTypes.STRING,
-    allowNull: false
+  {
+    timestamps: true,
+    sequelize: sequelizeConnection,
+    paranoid: true
   }
-}, {
-  timestamps: true,
-  sequelize: sequelizeConnection,
-  paranoid: true
-})
+)
 
 export default Books
