@@ -34,6 +34,16 @@ class Book {
       console.error(error)
     }
   }
+
+  async getOneBook (req: Request, res: Response) {
+    try {
+      const id = req.params.id
+      const book = await bookService.getOneBook(+id)
+      res.status(200).json(book)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 }
 
 export default Book
