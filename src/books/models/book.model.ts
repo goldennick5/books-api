@@ -1,7 +1,7 @@
 import { Model, Optional, DataTypes } from 'sequelize'
 import sequelizeConnection from '../../config'
 
-type BooksAtributes = {
+export type BooksAtributes = {
   id: number
   author: string
   title: string
