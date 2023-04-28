@@ -1,5 +1,4 @@
 import Books, {
-  BooksInput,
   BooksOutput,
   BooksAtributes
 } from '../models/book.model'
@@ -30,7 +29,7 @@ class BookService {
     return numAffectedRows
   }
 
-  async deleteBook (id: number): Promise<number> {
+  async deleteBook (id: string): Promise<number> {
     return await Books.destroy({ where: { id } })
   }
 }

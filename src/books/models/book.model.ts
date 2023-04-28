@@ -1,8 +1,9 @@
+import { v4 as uuidv4 } from 'uuid'
 import { Model, Optional, DataTypes } from 'sequelize'
 import sequelizeConnection from '../../config'
 
 export type BooksAtributes = {
-  id: number
+  id: string
   author: string
   title: string
   text: string
@@ -18,7 +19,7 @@ class Books
   extends Model<BooksAtributes, BooksInput>
   implements BooksAtributes
 {
-  public id: number
+  public id: string
   public author: string
   public title: string
   public text: string
@@ -31,9 +32,10 @@ class Books
 Books.init(
   {
     id: {
-      type: DataTypes.INTEGER.UNSIGNED,
-      autoIncrement: true,
-      primaryKey: true
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: () => uuidv4(),
+      allowNull: false
     },
     author: {
       type: DataTypes.STRING,
