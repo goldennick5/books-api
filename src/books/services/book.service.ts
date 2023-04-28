@@ -5,7 +5,7 @@ import Books, {
 } from '../models/book.model'
 
 class BookService {
-  async createBook (books: BooksAtributes[]): Promise<Books[]> {
+  async createBook (books: BooksAtributes[]): Promise<BooksOutput[]> {
     const createdBooks: Books[] = []
     for (const book of books) {
       const createdBook = await Books.build(book)
@@ -15,7 +15,7 @@ class BookService {
     return await createdBooks
   }
 
-  async getAllBooks (): Promise<Books[]> {
+  async getAllBooks (): Promise<BooksOutput[]> {
     return await Books.findAll()
   }
 

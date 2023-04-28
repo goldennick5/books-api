@@ -13,8 +13,8 @@ const port = process.env.PORT || 5000
 
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({extended: false}))
-app.use(express.static(path.resolve(__dirname, 'static')))
+app.use(express.urlencoded({ extended: false }))
+app.use(express.static(path.resolve(__dirname, 'images', 'books_images')))
 
 app.use('/', router)
 
