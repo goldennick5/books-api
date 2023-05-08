@@ -30,6 +30,7 @@ class Book {
   async getAllBooks (req: Request, res: Response) {
     try {
       const books = await bookService.getAllBooks()
+      console.log(books)
       res.status(200).json(books)
     } catch (error) {
       console.error(error)

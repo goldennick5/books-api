@@ -1,17 +1,9 @@
-import Books, {
-  BooksOutput,
-  BooksAtributes
-} from '../models/book.model'
+import Books, { BooksOutput, BooksAtributes } from '../models/book.model'
 
 class BookService {
   async createBook (books: BooksAtributes[]): Promise<BooksOutput[]> {
-    const createdBooks: Books[] = []
-    for (const book of books) {
-      const createdBook = await Books.build(book)
-      await createdBook.save()
-      createdBooks.push(createdBook)
-    }
-    return await createdBooks
+    const createdBooks: Books[] = await Books.bulkCreate(books)
+    return createdBooks
   }
 
   async getAllBooks (): Promise<BooksOutput[]> {

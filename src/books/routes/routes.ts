@@ -1,4 +1,4 @@
-import express   from 'express'
+import express from 'express'
 import bookRouter from './book.route'
 
 const router = express.Router()
